@@ -22,8 +22,9 @@
 ## Tech Stack
 
 <p>
-  <img src="https://skillicons.dev/icons?i=php,python,js,nodejs,nextjs,bootstrap,tailwind,html,css,mysql,postgres,docker,linux,git,nginx&perline=8" alt="Tech stack" />
-<img width="48" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/odoo/odoo-original.svg" alt="Odoo" />
+  <a href="https://www.odoo.com">
+  <img src="https://img.shields.io/badge/Odoo-714B67?style=flat-square&logo=odoo&logoColor=white" alt="Odoo" />
+</a>
 </p>
 
 ## GitHub Activity
