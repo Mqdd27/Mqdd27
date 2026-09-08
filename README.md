@@ -15,7 +15,7 @@
 
 ## About
 
-- Currently working with **Python, Odoo, and Javascript*
+- Currently working with **Python, Odoo, and Javascript**
 - Exploring **data engineering, machine learning, and cloud infrastructure**
 - Open to collaboration on useful open-source projects
 
