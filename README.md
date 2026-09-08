@@ -25,6 +25,6 @@
 ## GitHub Activity
 
 <div align="center">
-  <img height="165" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=Mqdd27&show_icons=true&hide_border=true&title_color=0A66C2&icon_color=0A66C2&text_color=334155&bg_color=ffffff" alt="GitHub statistics" />
-  <img height="165" src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=Mqdd27&layout=compact&langs_count=3&hide_border=true&title_color=0A66C2&text_color=334155&bg_color=ffffff" alt="Top 3 languages" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Mqdd27&theme=github" alt="GitHub statistics" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Mqdd27&theme=github" alt="Top languages" />
 </div>
