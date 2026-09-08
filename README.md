@@ -22,7 +22,7 @@
 ## Tech Stack
 
 <p>
-  <img src="https://skillicons.dev/icons?i=php,python,js,nodejs,nextjs,bootstrap,tailwind,html,css,mysql,postgres,docker,linux,git,nginx&perline=8" alt="Tech stack" />
+  <img src="https://skillicons.dev/icons?i=odoo,python,php,js,nodejs,nextjs,bootstrap,tailwind,html,css,mysql,postgres,docker,linux,git,nginx&perline=8" alt="Tech stack" />
 </p>
 
 ## GitHub Activity
