@@ -6,6 +6,9 @@
   <a href="https://www.linkedin.com/in/ahmad-miqdadd">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
+  <a href="https://profile.mqdd.my.id">
+  <img src="https://img.shields.io/badge/Website-0A66C2?style=flat-square&logo=googlechrome&logoColor=white" alt="Website" />
+</a>
 </div>
 
 <br />
