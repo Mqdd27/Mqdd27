@@ -43,3 +43,6 @@
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Mqdd27&theme=github" alt="GitHub statistics" />
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Mqdd27&theme=github" alt="Top languages" />
 </div>
+<p align="center">
+  <img src="https://streak-stats.demolab.com/?user=mqdd27&hide_border=true" alt="Streak stats" />
+</p>
