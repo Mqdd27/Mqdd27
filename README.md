@@ -35,6 +35,8 @@
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker" />
   <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
   <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/Emacs-%237F5AB6.svg?&logo=gnu-emacs&logoColor=white" alt="Emacs"/>
+  <img src="https://img.shields.io/badge/Zed-white?logo=zedindustries&logoColor=084CCF" alt="Zed"/>
 </p>
 
 ## GitHub Activity
