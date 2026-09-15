@@ -30,6 +30,7 @@
   <img src="https://img.shields.io/badge/Flask-000?logo=flask&logoColor=fff" alt="Flask"/>
   <img src="https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=fff" alt="Tauri"/>
   <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/Apache%20Airflow-017CEE?logo=apacheairflow&logoColor=fff" alt="Airflow"/>
   <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL" />
