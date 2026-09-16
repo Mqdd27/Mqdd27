@@ -72,6 +72,6 @@
 <!--START_SECTION:readme-info-->
 **Commits:** 725
 
-**From Hello World I have written 2.4 million Lines of Code ✍️**
+**Lines of Code:** 2,363,076 ( 2,525,712++, 162,636-- )
 
 <!--END_SECTION:readme-info-->

@@ -77,14 +77,8 @@ jobs:
               except Exception as e:
                   print(f"loc {name}: {e}")
 
-          def human(n):
-              for v, s in ((1e9, " billion"), (1e6, " million"), (1e3, " thousand")):
-                  if n >= v:
-                      return f"{n / v:.1f}".rstrip("0").rstrip(".") + s
-              return f"{n:,}"
-
           block = (f"**Commits:** {commits:,}\n\n"
-                   f"**Code written: {human(add - rem)} Lines of Code ✍️**\n")
+                   f"**Lines of Code:** {add - rem:,} ( {add:,}++, {rem:,}-- )\n")
           p = "README.md"
           s = open(p).read()
           open(p, "w").write(re.sub(
