@@ -7,16 +7,79 @@ on:
 
 jobs:
   update-readme:
-    name: GitHub README Generator
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: th3c0d3br34ker/github-readme-info@master
-        with:
+      - uses: actions/checkout@v4
+
+      - name: Hitung lines of code & update README
+        env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          TIMEZONE: "Asia/Jakarta"
-          SHOW_LINES_OF_CODE: "True"
-          SHOW_PROFILE_VIEWS: "False"
-          SHOW_DAILY_COMMIT: "False"
-          SHOW_WEEKLY_COMMIT: "False"
-          SHOW_LANGUAGE: "False"
-          SHOW_TOTAL_CONTRIBUTIONS: "False"
+          USERNAME: ${{ github.repository_owner }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, time, urllib.request
+
+          TOKEN = os.environ["GH_TOKEN"]
+          USER = os.environ.get("USERNAME", "Mqdd27")
+          API = "https://api.github.com"
+          HDR = {"Authorization": f"Bearer {TOKEN}",
+                 "Accept": "application/vnd.github+json",
+                 "User-Agent": "readme-loc"}
+
+          def get(url):
+              req = urllib.request.Request(url, headers=HDR)
+              try:
+                  with urllib.request.urlopen(req) as r:
+                      return r.status, json.loads(r.read() or b"null")
+              except urllib.error.HTTPError as e:
+                  return e.code, None
+
+          repos, page = [], 1
+          while True:
+              st, data = get(f"{API}/users/{USER}/repos?per_page=100&page={page}&type=owner")
+              if st != 200 or not data:
+                  break
+              repos += [r["name"] for r in data if not r.get("fork")]
+              if len(data) < 100:
+                  break
+              page += 1
+
+          total = 0
+          for name in repos:  # ponytail: sekuensial, puluhan repo selesai < 5 menit; paralelkan jika repo ratusan
+              for _ in range(3):
+                  st, data = get(f"{API}/repos/{USER}/{name}/stats/contributors")
+                  if st == 202:  # GitHub sedang menghitung statistik, coba lagi
+                      time.sleep(6)
+                      continue
+                  if data:
+                      for c in data:
+                          author = (c.get("author") or {}).get("login", "")
+                          if author.lower() == USER.lower():
+                              total += sum(w.get("a", 0) - w.get("d", 0) for w in c.get("weeks", []))
+                  break
+              time.sleep(0.3)
+
+          def human(n):
+              for v, s in ((1e9, " miliar"), (1e6, " juta"), (1e3, " ribu")):
+                  if n >= v:
+                      return f"{n / v:.1f}".rstrip("0").rstrip(".").replace(".", ",") + s
+              return str(n)
+
+          line = f"**Sejak Hello World saya telah menulis {human(total)} baris kode ✍️**\n"
+          p = "README.md"
+          s = open(p).read()
+          new = re.sub(r"(<!--START_SECTION:readme-info-->).*?(<!--END_SECTION:readme-info-->)",
+                       lambda m: m.group(1) + "\n" + line + "\n" + m.group(2),
+                       s, flags=re.S)
+          open(p, "w").write(new)
+          print(line.strip(), f"({total} baris, {len(repos)} repo)")
+          EOF
+
+      - name: Commit jika berubah
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet && echo "tidak ada perubahan" || (git commit -m "⤴ Auto update lines of code" && git push)
