@@ -50,11 +50,24 @@ jobs:
           commits = sum(v["totalCommitContributions"] + v["restrictedContributionsCount"]
                         for v in by_year.values())
 
+          langs = gql(
+              'query { user(login: "%s") { repositories(first: 100, ownerAffiliations: OWNER) '
+              '{ nodes { isFork primaryLanguage { name } } } } }' % user)["user"]["repositories"]["nodes"]
+          from collections import Counter
+          counts = Counter(n["primaryLanguage"]["name"] for n in langs
+                           if not n["isFork"] and n["primaryLanguage"])
+          total_lang = sum(counts.values())
+          fav, _ = counts.most_common(1)[0]
+          rows = []
+          for lang, c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:5]:
+              pct = c / total_lang * 100
+              bar = "█" * round(pct / 5) + "░" * (20 - round(pct / 5))
+              rows.append(f"{lang} | {c} repos | {bar} | {pct:.2f}%")
+          lang_table = "**My 💖 languages " + fav + "**\n\n```text\n" + "\n".join(rows) + "\n```\n"
           repos = gql(
               'query { user(login: "%s") { repositories(first: 100, ownerAffiliations: OWNER) '
               '{ nodes { name isFork } } } }' % user)["user"]["repositories"]["nodes"]
           names = [n["name"] for n in repos if not n["isFork"]]
-
           LOC_Q = ("query($owner: String!, $name: String!, $id: ID!, $cursor: String) {"
                    " repository(owner: $owner, name: $name) { defaultBranchRef { target { ... on Commit {"
                    " history(first: 100, author: {id: $id}, after: $cursor) {"
@@ -82,7 +95,8 @@ jobs:
           green = "https://img.shields.io/static/v1?label=%20&message=" + quote(f"{add:,}++") + "&color=3fb950&style=flat-square"
           red = "https://img.shields.io/static/v1?label=%20&message=" + quote(f"{rem:,}--") + "&color=f85149&style=flat-square"
           block = (f"**Commits:** <img alt=\"{commits:,} commits\" src=\"{blue}\" />\n\n"
-                   f"**Lines of Code:** {add - rem:,} ( <img alt=\"{add:,} lines added\" src=\"{green}\" /> <img alt=\"{rem:,} lines removed\" src=\"{red}\" /> )\n")
+                   f"**Lines of Code:** {add - rem:,} ( <img alt=\"{add:,} lines added\" src=\"{green}\" /> <img alt=\"{rem:,} lines removed\" src=\"{red}\" /> )\n\n"
+                   + lang_table)
           p = "README.md"
           s = open(p).read()
           open(p, "w").write(re.sub(

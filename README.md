@@ -74,4 +74,14 @@
 
 **Lines of Code:** 2,363,074 ( <img alt="2,525,722 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C525%2C722%2B%2B&color=3fb950&style=flat-square" /> <img alt="162,648 lines removed" src="https://img.shields.io/static/v1?label=%20&message=162%2C648--&color=f85149&style=flat-square" /> )
 
+**My 💖 languages Python**
+
+```text
+Python | 9 repos | █████░░░░░░░░░░░░░░░ | 25.71%
+HTML | 5 repos | ███░░░░░░░░░░░░░░░░░ | 14.29%
+Shell | 5 repos | ███░░░░░░░░░░░░░░░░░ | 14.29%
+CSS | 2 repos | █░░░░░░░░░░░░░░░░░░░ | 5.71%
+JavaScript | 2 repos | █░░░░░░░░░░░░░░░░░░░ | 5.71%
+```
+
 <!--END_SECTION:readme-info-->
