@@ -57,11 +57,14 @@ jobs:
           counts = Counter(n["primaryLanguage"]["name"] for n in langs
                            if not n["isFork"] and n["primaryLanguage"])
           total_lang = sum(counts.values())
+          top = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:5]
+          lw = max(len(lang) for lang, _ in top)
+          cw = len(str(max(c for _, c in top)))
           rows = []
-          for lang, c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:5]:
+          for lang, c in top:
               pct = c / total_lang * 100
-              bar = "█" * round(pct / 5) + "░" * (20 - round(pct / 5))
-              rows.append(f"{lang} | {c} repos | {bar} | {pct:.2f}%")
+              bar = "█" * round(pct / 4) + "░" * (25 - round(pct / 4))
+              rows.append(f"{lang:<{lw}}  {c:>{cw}} repos {bar} {pct:>5.2f}%")
           lang_table = "**Languages**\n\n```text\n" + "\n".join(rows) + "\n```\n"
           repos = gql(
               'query { user(login: "%s") { repositories(first: 100, ownerAffiliations: OWNER) '
