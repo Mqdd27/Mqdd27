@@ -70,11 +70,11 @@
 </p>
 
 <!--START_SECTION:readme-info-->
-**Commits:** <img alt="731 commits" src="https://img.shields.io/static/v1?label=%20&message=731&color=58a6ff&style=flat-square" />
+**Commits:** <img alt="732 commits" src="https://img.shields.io/static/v1?label=%20&message=732&color=58a6ff&style=flat-square" />
 
-**Lines of Code:** 2,363,067 ( <img alt="2,525,764 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C525%2C764%2B%2B&color=3fb950&style=flat-square" /> <img alt="162,697 lines removed" src="https://img.shields.io/static/v1?label=%20&message=162%2C697--&color=f85149&style=flat-square" /> )
+**Lines of Code:** 2,363,066 ( <img alt="2,525,765 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C525%2C765%2B%2B&color=3fb950&style=flat-square" /> <img alt="162,699 lines removed" src="https://img.shields.io/static/v1?label=%20&message=162%2C699--&color=f85149&style=flat-square" /> )
 
-**My 💖 languages Python**
+**Languages**
 
 ```text
 Python | 9 repos | █████░░░░░░░░░░░░░░░ | 25.71%
