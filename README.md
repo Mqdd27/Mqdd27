@@ -1,5 +1,13 @@
 <div align="center">
   <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&pause=1000&color=0A66C2&center=true&vCenter=true&width=520&lines=Hi%2C+I%27m+Miqdad.;Building+useful+for+My+Own+Needs." alt="Typing SVG" />
+  <p>
+  <a href="https://www.linkedin.com/in/ahmad-miqdadd">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://profile.mqdd.my.id">
+    <img src="https://img.shields.io/badge/Website-0A66C2?style=flat-square&logo=googlechrome&logoColor=white" alt="Website" />
+  </a>
+</p>
 </div>
 
 ## About
@@ -66,11 +74,4 @@
 
 ## Connect with Me
 
-<p>
-  <a href="https://www.linkedin.com/in/ahmad-miqdadd">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="https://profile.mqdd.my.id">
-    <img src="https://img.shields.io/badge/Website-0A66C2?style=flat-square&logo=googlechrome&logoColor=white" alt="Website" />
-  </a>
-</p>
+
