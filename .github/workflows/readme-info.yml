@@ -77,8 +77,11 @@ jobs:
               except Exception as e:
                   print(f"loc {name}: {e}")
 
+          from urllib.parse import quote
+          green = "https://img.shields.io/static/v1?label=%20&message=" + quote(f"{add:,}++") + "&color=3fb950&style=flat-square"
+          red = "https://img.shields.io/static/v1?label=%20&message=" + quote(f"{rem:,}--") + "&color=f85149&style=flat-square"
           block = (f"**Commits:** {commits:,}\n\n"
-                   f"**Lines of Code:** {add - rem:,} ( {add:,}++, {rem:,}-- )\n")
+                   f"**Lines of Code:** {add - rem:,} ( <img alt=\"{add:,} lines added\" src=\"{green}\" /> <img alt=\"{rem:,} lines removed\" src=\"{red}\" /> )\n")
           p = "README.md"
           s = open(p).read()
           open(p, "w").write(re.sub(
