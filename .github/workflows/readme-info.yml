@@ -84,7 +84,7 @@ jobs:
               return f"{n:,}"
 
           block = (f"**Commits:** {commits:,}\n\n"
-                   f"**From Hello World I have written {human(add - rem)} Lines of Code ✍️**\n")
+                   f"**Code written: {human(add - rem)} Lines of Code ✍️**\n")
           p = "README.md"
           s = open(p).read()
           open(p, "w").write(re.sub(
