@@ -70,8 +70,8 @@
 </p>
 
 <!--START_SECTION:readme-info-->
-**Commits:** 724
+**Commits:** 725
 
-**Code written: 2.4 million Lines ✍️**
+**From Hello World I have written 2.4 million Lines of Code ✍️**
 
 <!--END_SECTION:readme-info-->
