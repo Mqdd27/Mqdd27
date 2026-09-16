@@ -68,7 +68,7 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=Mqdd27&hide_border=true&background=0D1117&currStreakLabel=58A6FF" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=Mqdd27&theme=github-dark&hide_border=true" />
     <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=Mqdd27&hide_border=true" />
     <img alt="Rangkaian kontribusi harian" src="https://streak-stats.demolab.com?user=Mqdd27&hide_border=true" />
   </picture>
