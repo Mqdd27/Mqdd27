@@ -13,73 +13,90 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Hitung lines of code & update README
+      - name: Update commits & lines of code
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
         run: |
           python3 - <<'EOF'
-          import json, os, re, time, urllib.request
+          import json, os, re, urllib.request
+          from datetime import datetime, timezone
 
           TOKEN = os.environ["GH_TOKEN"]
-          USER = os.environ.get("USERNAME", "Mqdd27")
           API = "https://api.github.com"
           HDR = {"Authorization": f"Bearer {TOKEN}",
                  "Accept": "application/vnd.github+json",
-                 "User-Agent": "readme-loc"}
+                 "User-Agent": "readme-stats"}
 
-          def get(url):
-              req = urllib.request.Request(url, headers=HDR)
+          def gql(query, variables=None):
+              req = urllib.request.Request(
+                  API + "/graphql",
+                  data=json.dumps({"query": query, "variables": variables or {}}).encode(),
+                  headers={**HDR, "Content-Type": "application/json"})
+              with urllib.request.urlopen(req) as r:
+                  body = json.loads(r.read() or b"{}")
+              if body.get("errors"):
+                  raise RuntimeError(body["errors"])
+              return body["data"]
+
+          me = gql("query { viewer { login id } }")["viewer"]
+          user, uid = me["login"], me["id"]
+
+          year = datetime.now(timezone.utc).year
+          contribs = " ".join(
+              f'y{y}: contributionsCollection(from: "{y}-01-01T00:00:00Z", to: "{y+1}-01-01T00:00:00Z")'
+              " { totalCommitContributions restrictedContributionsCount }"
+              for y in range(2019, year + 1))  # 2019 = account creation year, never changes
+          by_year = gql(f'query {{ user(login: "{user}") {{ {contribs} }} }}')["user"]
+          commits = sum(v["totalCommitContributions"] + v["restrictedContributionsCount"]
+                        for v in by_year.values())
+
+          repos = gql(
+              'query { user(login: "%s") { repositories(first: 100, ownerAffiliations: OWNER) '
+              '{ nodes { name isFork } } } }' % user)["user"]["repositories"]["nodes"]
+          names = [n["name"] for n in repos if not n["isFork"]]
+
+          LOC_Q = ("query($owner: String!, $name: String!, $id: ID!, $cursor: String) {"
+                   " repository(owner: $owner, name: $name) { defaultBranchRef { target { ... on Commit {"
+                   " history(first: 100, author: {id: $id}, after: $cursor) {"
+                   " pageInfo { hasNextPage endCursor } nodes { additions deletions } } } } } } }")
+          add = rem = 0
+          for name in names:  # ponytail: sequential; dozens of repos finish in ~1 min, parallelize if hundreds
+              cursor = None
               try:
-                  with urllib.request.urlopen(req) as r:
-                      return r.status, json.loads(r.read() or b"null")
-              except urllib.error.HTTPError as e:
-                  return e.code, None
-
-          repos, page = [], 1
-          while True:
-              st, data = get(f"{API}/users/{USER}/repos?per_page=100&page={page}&type=owner")
-              if st != 200 or not data:
-                  break
-              repos += [r["name"] for r in data if not r.get("fork")]
-              if len(data) < 100:
-                  break
-              page += 1
-
-          total = 0
-          for name in repos:  # ponytail: sekuensial, puluhan repo selesai < 5 menit; paralelkan jika repo ratusan
-              for _ in range(3):
-                  st, data = get(f"{API}/repos/{USER}/{name}/stats/contributors")
-                  if st == 202:  # GitHub sedang menghitung statistik, coba lagi
-                      time.sleep(6)
-                      continue
-                  if data:
-                      for c in data:
-                          author = (c.get("author") or {}).get("login", "")
-                          if author.lower() == USER.lower():
-                              total += sum(w.get("a", 0) - w.get("d", 0) for w in c.get("weeks", []))
-                  break
-              time.sleep(0.3)
+                  while True:
+                      ref = gql(LOC_Q, {"owner": user, "name": name, "id": uid, "cursor": cursor}
+                                )["repository"]["defaultBranchRef"]
+                      if ref is None:
+                          break
+                      h = ref["target"]["history"]
+                      add += sum(n["additions"] for n in h["nodes"])
+                      rem += sum(n["deletions"] for n in h["nodes"])
+                      if not h["pageInfo"]["hasNextPage"]:
+                          break
+                      cursor = h["pageInfo"]["endCursor"]
+              except Exception as e:
+                  print(f"loc {name}: {e}")
 
           def human(n):
-              for v, s in ((1e9, " miliar"), (1e6, " juta"), (1e3, " ribu")):
+              for v, s in ((1e9, " billion"), (1e6, " million"), (1e3, " thousand")):
                   if n >= v:
-                      return f"{n / v:.1f}".rstrip("0").rstrip(".").replace(".", ",") + s
-              return str(n)
+                      return f"{n / v:.1f}".rstrip("0").rstrip(".") + s
+              return f"{n:,}"
 
-          line = f"**Sejak Hello World saya telah menulis {human(total)} baris kode ✍️**\n"
+          block = (f"**Commits:** {commits:,}\n\n"
+                   f"**From Hello World I have written {human(add - rem)} Lines of Code ✍️**\n")
           p = "README.md"
           s = open(p).read()
-          new = re.sub(r"(<!--START_SECTION:readme-info-->).*?(<!--END_SECTION:readme-info-->)",
-                       lambda m: m.group(1) + "\n" + line + "\n" + m.group(2),
-                       s, flags=re.S)
-          open(p, "w").write(new)
-          print(line.strip(), f"({total} baris, {len(repos)} repo)")
+          open(p, "w").write(re.sub(
+              r"(<!--START_SECTION:readme-info-->).*?(<!--END_SECTION:readme-info-->)",
+              lambda m: m.group(1) + "\n" + block + "\n" + m.group(2), s, flags=re.S))
+          print(f"commits={commits} loc={add - rem} (+{add}/-{rem}) repos={len(names)}")
           EOF
 
-      - name: Commit jika berubah
+      - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add README.md
-          git diff --cached --quiet && echo "tidak ada perubahan" || (git commit -m "⤴ Auto update lines of code" && git push)
+          git diff --cached --quiet && echo "no changes" || (git commit -m "⤴ Auto update commits & lines of code" && git push)

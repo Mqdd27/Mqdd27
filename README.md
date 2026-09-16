@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&pause=1000&color=0A66C2&center=true&vCenter=true&width=650&lines=Halo%2C+saya+Miqdad.;Membangun+hal+berguna+untuk+kebutuhan+sendiri." alt="Animasi teks perkenalan" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&pause=1000&color=0A66C2&center=true&vCenter=true&width=520&lines=Hi%2C+I%27m+Miqdad.;Building+useful+for+My+Own+Needs." alt="Typing SVG" />
 </div>
 
-## Tentang Saya
+## About
 
-- Fokus saat ini: **Python, Odoo, dan JavaScript**
-- Sedang mendalami: **data engineering, machine learning, dan cloud infrastructure**
-- Terbuka untuk kolaborasi **open-source** yang bermanfaat
+- Currently working with **Python, Odoo, and JavaScript**
+- Exploring **data engineering, machine learning, and cloud infrastructure**
+- Open to collaboration on useful open-source projects
 
 ## Tech Stack
 
-**Bahasa**
+**Languages**
 
 <p>
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
@@ -51,33 +51,20 @@
   <img src="https://img.shields.io/badge/Zed-084CCF?style=flat-square&logo=zedindustries&logoColor=white" alt="Zed" />
 </p>
 
-## Statistik GitHub
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Mqdd27&theme=github_dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Mqdd27&theme=github" />
-    <img alt="Statistik GitHub" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Mqdd27&theme=github" />
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Mqdd27&theme=github_dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Mqdd27&theme=github" />
-    <img alt="Bahasa yang paling sering dipakai" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Mqdd27&theme=github" />
-  </picture>
-</div>
+## GitHub Stats
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=Mqdd27&theme=github-dark&hide_border=true" />
     <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com?user=Mqdd27&hide_border=true" />
-    <img alt="Rangkaian kontribusi harian" src="https://streak-stats.demolab.com?user=Mqdd27&hide_border=true" />
+    <img alt="GitHub contribution streak" src="https://streak-stats.demolab.com?user=Mqdd27&hide_border=true" />
   </picture>
 </p>
 
 <!--START_SECTION:readme-info-->
 <!--END_SECTION:readme-info-->
 
-## Hubungi Saya
+## Connect with Me
 
 <p>
   <a href="https://www.linkedin.com/in/ahmad-miqdadd">
