@@ -70,9 +70,9 @@
 </p>
 
 <!--START_SECTION:readme-info-->
-**Commits:** <img alt="754 commits" src="https://img.shields.io/static/v1?label=%20&message=754&color=58a6ff&style=flat-square" />
+**Commits:** <img alt="765 commits" src="https://img.shields.io/static/v1?label=%20&message=765&color=58a6ff&style=flat-square" />
 
-**Lines of Code:** 2,381,658 ( <img alt="2,551,433 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C551%2C433%2B%2B&color=3fb950&style=flat-square" /> <img alt="169,775 lines removed" src="https://img.shields.io/static/v1?label=%20&message=169%2C775--&color=f85149&style=flat-square" /> )
+**Lines of Code:** 2,382,140 ( <img alt="2,552,174 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C552%2C174%2B%2B&color=3fb950&style=flat-square" /> <img alt="170,034 lines removed" src="https://img.shields.io/static/v1?label=%20&message=170%2C034--&color=f85149&style=flat-square" /> )
 
 **Languages**
 
