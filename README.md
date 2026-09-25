@@ -70,18 +70,18 @@
 </p>
 
 <!--START_SECTION:readme-info-->
-**Commits:** <img alt="785 commits" src="https://img.shields.io/static/v1?label=%20&message=785&color=58a6ff&style=flat-square" />
+**Commits:** <img alt="790 commits" src="https://img.shields.io/static/v1?label=%20&message=790&color=58a6ff&style=flat-square" />
 
-**Lines of Code:** 2,383,787 ( <img alt="2,554,036 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C554%2C036%2B%2B&color=3fb950&style=flat-square" /> <img alt="170,249 lines removed" src="https://img.shields.io/static/v1?label=%20&message=170%2C249--&color=f85149&style=flat-square" /> )
+**Lines of Code:** 2,385,006 ( <img alt="2,555,275 lines added" src="https://img.shields.io/static/v1?label=%20&message=2%2C555%2C275%2B%2B&color=3fb950&style=flat-square" /> <img alt="170,269 lines removed" src="https://img.shields.io/static/v1?label=%20&message=170%2C269--&color=f85149&style=flat-square" /> )
 
 **Languages**
 
 ```text
-Python      10 repos ███████░░░░░░░░░░░░░░░░░░ 27.03%
-HTML         5 repos ███░░░░░░░░░░░░░░░░░░░░░░ 13.51%
-Shell        5 repos ███░░░░░░░░░░░░░░░░░░░░░░ 13.51%
-TypeScript   3 repos ██░░░░░░░░░░░░░░░░░░░░░░░  8.11%
-CSS          2 repos █░░░░░░░░░░░░░░░░░░░░░░░░  5.41%
+Python      11 repos ███████░░░░░░░░░░░░░░░░░░ 28.95%
+HTML         5 repos ███░░░░░░░░░░░░░░░░░░░░░░ 13.16%
+Shell        5 repos ███░░░░░░░░░░░░░░░░░░░░░░ 13.16%
+TypeScript   3 repos ██░░░░░░░░░░░░░░░░░░░░░░░  7.89%
+CSS          2 repos █░░░░░░░░░░░░░░░░░░░░░░░░  5.26%
 ```
 
 <!--END_SECTION:readme-info-->
